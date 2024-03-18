@@ -3,7 +3,6 @@ const bodyParser = require('body-parser');
 
 const app = express();
 
-// Middleware to parse JSON bodies
 app.use(bodyParser.json());
 
 
@@ -21,22 +20,16 @@ app.get('/bfhl',(req,res)=>{
     res.write(list);
     res.end();
 })
-// POST endpoint to handle the request
 app.post('/bfhl', (req, res) => {
-        // Extract data from the request
         const data = req.body.data;
 
-        // Generate user_id
-        const user_id = "john_doe_17091999"; // Change this with your actual user_id generation logic
-
-        // Process the data
-        const email = "john@xyz.com"; // Change this with the actual email
-        const roll_number = "ABCD123"; // Change this with the actual roll number
+        const user_id = "john_doe_17091999"; 
+        const email = "john@xyz.com";
+        const roll_number = "ABCD123"; 
         const odd_numbers = [];
         const even_numbers = [];
         const alphabets = [];
 
-        // Loop through each element in the data array
         for (let i = 0; i < data.length; i++) {
             const element = data[i];
             if (typeof element === "string" && isNaN(element)) {
@@ -49,9 +42,6 @@ app.post('/bfhl', (req, res) => {
                 }
             }
         }
-        
-
-        // Prepare and send the response
         response = {
             is_success: true,
             user_id: user_id,
@@ -63,6 +53,4 @@ app.post('/bfhl', (req, res) => {
         };
         res.json(response);
 });
-
-// Start the server
 app.listen(3000);
