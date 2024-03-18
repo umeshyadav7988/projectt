@@ -11,10 +11,6 @@ app.get('/',(req,res)=>{
     res.end();
 })
 
-let response={
-
-};
-
 app.get('/bfhl',(req,res)=>{
     let list=JSON.stringify(response);
     res.write(list);
